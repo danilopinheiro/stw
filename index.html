@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Store Web</title>
+
+	<script type="text/javascript">
+
+		getValue = function(){
+			var value = $("#findStore").getSelectedItemData().name;
+			$("#id-value").val(value).trigger("change");
+			console.info(value);
+			$("#findStore").submit();
+		};
+
+		var options = {
+			url: "resources/stores.json",
+
+			getValue: "name",
+
+			list: {
+				match: {
+					enabled: true
+				},
+				maxNumberOfElements: 8,
+				
+				onClickEvent: function() {
+					//sendData();
+				},
+				onKeyEnterEvent: function() {
+					//sendData();
+				}	
+			},
+
+			theme: "plate-dark"
+
+		};
+
+	</script>
+</head>
+<body>
+
+	<form id="formStore" action="robotExecutionList.php" method="GET">
+		<input id="findStore" placeholder="Buscar loja" name="store" />
+		<input type="submit" value="Ir">
+	</form>
+
+
+	<!-- Using jQuery with a CDN -->
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+	<!-- JS file -->
+	<script src="easy-autocomplete/jquery.easy-autocomplete.min.js"></script> 
+
+	<!-- CSS file -->
+	<link rel="stylesheet" href="easy-autocomplete/easy-autocomplete.min.css"> 
+
+	<!-- Additional CSS Themes file - not required-->
+	<link rel="stylesheet" href="easy-autocomplete/easy-autocomplete.themes.min.css">
+
+	<script>
+	
+	$(document).ready(function($){
+		$("#findStore").easyAutocomplete(options);
+
+		//$("#formStore").on('submit', function(e) {
+		    //e.preventDefault();
+		    //console.log($(this).serialize());
+	  //});
+  	});
+		
+	</script>
+</body>
+</html>
+</html>
